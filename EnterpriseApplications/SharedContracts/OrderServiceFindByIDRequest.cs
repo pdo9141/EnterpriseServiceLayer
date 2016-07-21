@@ -8,5 +8,6 @@ namespace SharedContracts
 {
     public class OrderServiceFindByIDRequest
     {
+        public long OrderID { get; set; }
     }
 }

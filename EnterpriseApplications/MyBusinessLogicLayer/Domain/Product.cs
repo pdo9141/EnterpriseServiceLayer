@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyBusinessLogicLayer.Domain
 {
-    public class Shipper
+    public class Product
     {
-        public string CompanyName { get; set; }
+        public string Description { get; set; }
     }
 }

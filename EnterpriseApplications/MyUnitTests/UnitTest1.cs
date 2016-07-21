@@ -12,7 +12,7 @@ namespace MyUnitTests
         public void OrderService_FindByID_Test()
         {
             OrderService service = new OrderService();
-            OrderServiceFindByIDRequest request = new OrderServiceFindByIDRequest();
+            OrderServiceFindByIDRequest request = new OrderServiceFindByIDRequest { OrderID = 1 };
             OrderServiceFindByIDResponse response = service.FindByID(request);
         }
     }

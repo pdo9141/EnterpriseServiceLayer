@@ -8,5 +8,6 @@ namespace MyBusinessLogicLayer.Domain
 {
     public class Customer
     {
+        public string CompanyName { get; set; }
     }
 }
