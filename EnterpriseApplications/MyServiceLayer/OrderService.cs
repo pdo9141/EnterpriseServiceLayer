@@ -46,5 +46,54 @@ namespace MyServiceLayer
 
             return order;
         }
+
+        public OrderServiceUpdateOrderResponse Update(OrderServiceUpdateOrderRequest request)
+        {
+            // count insertions (if only insertions are requested, avoid loading the graph)
+            int insertCount = (from op in request.Changes
+                              where op.TypeOfChange == OrderChangeTypes.Create
+                              select op).Count();
+
+            if (insertCount == request.Changes.Count)
+            {
+                foreach (OrderChange change in request.Changes)
+                {
+                    Order newOrder = new Order();
+                    // .
+                    // .
+                    // .
+                    InsertOrderIntoPersistence(newOrder);
+                }
+            }
+
+            // load the graph for the order using the data access layer
+            // you can directly use an O/RM here or perhaps a repository or your data mappers
+            Order order = LoadOrderFromPersistence(request.OrderID);
+            foreach (OrderChange change in request.Changes)
+            {
+                switch (change.TypeOfChange)
+                {
+                    case OrderChangeTypes.Create:
+                        break;
+                    case OrderChangeTypes.Update:
+                        break;
+                    case OrderChangeTypes.Delete:
+                        break;
+                }
+            }
+
+            // prepare the response
+            // need an adapter here? probably not
+            OrderServiceUpdateOrderResponse response = new OrderServiceUpdateOrderResponse();
+            // .
+            // .
+            // .
+            return response;
+        }
+
+        private void InsertOrderIntoPersistence(Order order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
